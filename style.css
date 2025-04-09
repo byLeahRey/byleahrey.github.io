@@ -222,7 +222,20 @@ header {
   align-items: center;
   z-index: 1100;
   box-sizing: border-box;
+}
+
+.header__background{
   background-color: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -398,6 +411,8 @@ body.menu-open #audioIcon {
   fill: var(--background-color);
   transition: all 0.3s ease; /* Transición suave para el cambio de color */
 }
+
+
 
 
 
@@ -1427,8 +1442,13 @@ body.menu-open #audioIcon {
 
   /* HEADER */
   header {
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
     height: fit-content;
+  }
+
+  .header__background{
+    padding: 1.5rem 1.5rem 1rem 1.5rem;
+    height: 4rem;
   }
 
   .menu-overlay__menu {
