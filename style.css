@@ -1201,7 +1201,6 @@ body.menu-open #audioIcon {
 
   .hero__image--movile{
     display: flex;
-    width: auto;
     height: 100%;
     width: 100%;
     margin-top: 1rem;
@@ -1455,11 +1454,22 @@ body.menu-open #audioIcon {
   /*HERO*/
 
   .hero {
-    height: 100vh;
+    height: fit-content;
     padding: 8rem 3rem 3rem 3rem ;
   }
 
+  /* PROJECTS */
+
+  .projects{
+    height: fit-content;
+  }
+
   /* SERVICES */
+
+  .services{
+    height: fit-content;
+  }
+
   .services__list {
     display: flex;
     flex-direction: column;
@@ -1474,6 +1484,10 @@ body.menu-open #audioIcon {
 
 
   /* ABOUT */
+
+  .about{
+    height: fit-content;
+  }
 
   
   .about__text--footer {
@@ -1508,5 +1522,9 @@ body.menu-open #audioIcon {
   .how-i-work__row--second{
     flex-direction: column;
     justify-content: left;
+  }
+
+  .contact{
+    height: fit-content;
   }
 }
