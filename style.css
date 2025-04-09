@@ -1448,6 +1448,12 @@ body.menu-open #audioIcon {
     font-size: 2rem;
     align-items: center;
   }
+  /*HERO*/
+
+  .hero {
+    height: 100vh;
+    padding: 8rem 3rem 3rem 3rem ;
+  }
 
   /* SERVICES */
   .services__list {
@@ -1500,3 +1506,4 @@ body.menu-open #audioIcon {
     justify-content: left;
   }
 }
+
