@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/styles/styless.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=menu" />
@@ -105,6 +105,8 @@
   </div>
 </header>
 
+<div id="header__background" class="header__background"></div>
+
 <!-- MENÚ OVERLAY -->
 <div id="menu-overlay" class="menu-overlay">
   <nav class="menu-overlay__menu">
@@ -192,7 +194,7 @@
     <div class="hero__content">
       <span class="hero__side">Let's Make</span>
       <div class="hero__image img  " >
-      <img src="https://via.aplaceholder.com/150x100" alt="image" /> <br>
+      <img src="https://via.placeholder.com/150x100" alt="image" /> <br>
       <p>There's something missing here, but it's being worked on.</p>
       </div>
       <span class="hero__side">It Happen</span>
@@ -230,7 +232,25 @@
     </div>
   </section>
 
-  <!-- PROJECTS CAROUSEL-->
+  <!-- PROJECTS mobile-->
+<section class="projects">
+  <!-- Proyecto 1 -->
+    <a  class="project_item" href="#">
+
+    </a>   
+
+    <a  class="project_item" href="#">
+
+    </a>   
+
+    <a  class="project_item" href="#">
+
+    </a>   
+
+
+
+</section>
+
 <!-- PROJECTS CAROUSEL-->
 <div id="projects" class="projects-carousel">
   <div class="projects-carousel__track">
@@ -749,7 +769,16 @@ menuClose.addEventListener('click', () => {
 
 
 
+const myElement = document.getElementById('header__background');
 
+window.addEventListener('scroll', () => {
+  // Si hemos hecho scroll hacia abajo, aplicamos la clase
+  if (window.scrollY > 100) {  // Usamos un valor fijo de desplazamiento
+    myElement.classList.add('scrolled');
+  } else {
+    myElement.classList.remove('scrolled');
+  }
+});
 
 
 
