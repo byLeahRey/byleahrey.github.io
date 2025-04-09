@@ -236,6 +236,10 @@ header {
   align-items: center;
   z-index: 100;
   box-sizing: border-box;
+}
+
+
+.header__background.scrolled {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -680,6 +684,23 @@ body.menu-open #audioIcon {
     justify-content: center;
   }
   
+/* =====================================
+    PROJECTS
+===================================== */
+
+  .projects{
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project_item{
+    background-color: #8E44AD;
+    border: 1rem solid var(--background-color);
+    width: 100%;
+    height: 15rem;
+  }
   
 
 /* =====================================
@@ -1183,6 +1204,11 @@ body.menu-open #audioIcon {
 /* ========= 1024px o menos ========= */
 @media (max-width: 1024px) {
 
+  .projects-carousel{
+    display: none;
+  }
+
+
   h3{
     font-size: clamp(7rem, 6vw, 14rem);
   }
@@ -1392,7 +1418,6 @@ body.menu-open #audioIcon {
 
 /* ========= 1440px o más ========= */
 @media (min-width: 1440px) {
-
 
   /* Ajustes específicos para pantallas grandes */
 
