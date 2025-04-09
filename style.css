@@ -1470,6 +1470,12 @@ body.menu-open #audioIcon {
 
   /* PROJECTS */
 
+  .projects-intro{
+    height: fit-content;
+    padding: 1.5rem;
+  }
+
+
   .projects{
     height: fit-content;
   }
