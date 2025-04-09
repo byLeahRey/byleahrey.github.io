@@ -799,6 +799,7 @@ body.menu-open #audioIcon {
   top: 1rem;
   right: 1rem;
   color: var(--background-color);
+  background-color: var(--primary-color);
   padding: 4rem;
 }
 
@@ -1416,7 +1417,7 @@ body.menu-open #audioIcon {
   }
 
   h3{
-    font-size: 15vw;
+    font-size: 20vw;
   }
 
   p{
