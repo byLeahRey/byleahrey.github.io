@@ -212,7 +212,7 @@ h1.visible, h2.visible, h3.visible, h4.visible, h5.visible, h6.visible, p.visibl
 
 /* ===== HEADER ===== */
 header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -222,6 +222,8 @@ header {
   align-items: center;
   z-index: 1100;
   box-sizing: border-box;
+  background-color: var(--background-color);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header__container {
@@ -1559,4 +1561,3 @@ body.menu-open #audioIcon {
     height: fit-content;
   }
 }
-
