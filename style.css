@@ -1383,6 +1383,10 @@ body.menu-open #audioIcon {
 
   /*HERO*/
 
+  .hero{
+    height: 100vh;
+  }
+
   .services {
     padding: 2.5rem;
   }
@@ -1506,4 +1510,3 @@ body.menu-open #audioIcon {
     justify-content: left;
   }
 }
-
