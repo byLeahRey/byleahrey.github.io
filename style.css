@@ -1065,8 +1065,15 @@ body.menu-open {
 }
 
 .footer__logo {
-  width: 20rem;
   height: auto;
+  color: var(--background-color);
+
+}
+
+
+.footer__left svg {
+  fill: var(--background-color);
+  width: 15rem;
 }
 
 /* Parte derecha (Listas de enlaces) */
@@ -1577,4 +1584,3 @@ body.menu-open {
 
 
 }
-
