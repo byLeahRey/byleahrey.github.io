@@ -1,1 +1,1790 @@
+  /* =====================================
+     TEMPORAL
+  ===================================== */
+
+
+  .img{
+    border-radius: 2rem;
+    background-color: #c4c3bd;
+    padding: 1rem;
+    font-family: var(--font-family-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+  }
+  
+  .img p{
+    font-size: 0.7rem;
+  }
+  
+  
+  .img img{
+    display: none;
+  }
+  
+
+/* =====================================
+   VARIABLES (usa :root si no hay preprocesador)
+===================================== */
+:root {
+    --primary-color: #F0F66E;
+    --secondary-color: #272727;
+    --background-color: #F5F4EF;
+    --font-size: 16px;
+    --font-family-title: "Instrument Serif", serif;
+    --font-family-text: "Instrument Sans", sans-serif;
+  }
+  
+  /* =====================================
+     RESET BÁSICO Y BOX-SIZING
+  ===================================== */
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* =====================================
+     ELEMENTOS GENERALES
+  ===================================== */
+
+
+  .toast {
+  position: fixed;
+  margin: 0 auto;
+  background: var(--secondary-color);
+  color: var(--background-color);
+  padding: 0.8rem 1.2rem;
+  font-size: 4rem;
+  line-height: 1.2;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 2000;
+  animation: fadeOut 2s ease forwards;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-title);
+  text-align: center;
+}
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; display: none; }
+}
+  
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(12, 2fr); /* 12 columnas */
+    gap: 2rem; /* Espacio entre los elementos */
+}
+
+
+  html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+    overflow-x: hidden;      
+  }
+  
+  body {
+    font-family: var(--font-family-text);
+    line-height: 1.6;
+    color: var(--secondary-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;  /* Para Webkit (Chrome, Safari) */
+    -moz-osx-font-smoothing: grayscale;   /* Para Firefox en macOS */
+  }
+
+  h1{
+    font-family: var(--font-family-title);
+    font-weight: normal;
+    font-size: 5rem;
+  }
+
+  h2{
+    font-family: var(--font-family-text);
+    font-size: 1.2rem;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  h3{
+    font-weight: normal;
+    font-family: var(--font-family-title);
+    font-size: clamp(4.25rem, 7vw, 14rem);
+    line-height: 1;
+  }
+
+  h4 {
+    font-family: var(--font-family-text);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 0.8vw + 0.9rem, 1.4rem);
+    line-height: 1.2;
+  }
+  
+  h5 {
+    font-family: var(--font-family-text);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 0.8vw + 0.9rem, 1.4rem);
+    line-height: 1.35;
+  }
+  
+  
+  a {
+    color: inherit;
+    text-decoration: none; 
+    transition: transform 0.3s ease;
+  }
+      
+  a:hover {
+    transform: translateY(3px); /* Desplazamiento hacia arriba */
+  }
+
+  ul {
+      list-style: none;
+  }
+
+  p{
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+    /* =====================================
+        BOTONES
+    ===================================== */
+   /* Estilo base para el botón */
+/* Estilo base para el botón */
+
+/* Efecto hover sutil para el botón */
+button {
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  font-size: 1rem;
+  text-transform: uppercase;
+  padding: 0.1rem;
+  border-bottom:0.1rem solid var(--secondary-color);
+}
+
+button:hover {
+  transform: translateY(3px); /* Se mueve ligeramente al pasar el mouse */
+}
+
+button:active {
+  transform: translateY(6px); /* Baja más al hacer clic */
+}
+
+
+
+
+
+/* =====================================
+    ANIMACIONES
+===================================== */
+
+/* Animación general para encabezados y párrafos (sin spans) */
+h1, h2, h3, h4, h5, h6, p {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Clase "visible" solo para encabezados y párrafos */
+h1.visible, h2.visible, h3.visible, h4.visible, h5.visible, h6.visible, p.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process-mobile__carousel h4,
+.process-mobile__carousel p {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+
+    
+/* =====================================
+    HEADER / NAV (base)
+===================================== */
+
+/* ===== HEADER ===== */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1100;
+  box-sizing: border-box;
+}
+
+/*.header__background{
+  position: absolute;
+  background-color: var(--background-color);
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 3rem 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-sizing: border-box;
+}
+*/
+
+
+
+
+.header__container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.header__container div{
+  height: 24px;
+}
+
+.header__social {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.header__social a {
+  display: block;
+}
+
+.header__social svg {
+  width: auto;
+  height: 0.8rem;
+  fill: var(--secondary-color);
+  transition: all 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+.header__logo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header__logo svg:last-child {
+  display: none;
+}
+
+.header__logo svg {
+  height: fit-content;
+  width: 6rem;
+  fill: var(--secondary-color);
+}
+
+.header__menu-control {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  flex-direction: row;
+  flex: 1;
+  height: 100%;
+}
+
+.header__menu-control div{
+  height: 100%;
+}
+
+/* ===== ICONO HAMBURGUESA ===== */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  height: auto;
+  color: var(--secondary-color); /* Color del icono de hamburguesa */
+  height: 24px;
+}
+
+/* ===== ICONO CIERRE (X) ===== */
+.menu-close {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  cursor: pointer;
+  color: var(--background-color);
+}
+
+.menu-close span {
+  height: auto;
+  margin: 0 auto;
+}
+
+/* ===== MENÚ OVERLAY ===== */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  z-index: 1000;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.menu-overlay--active {
+  display: flex;
+}
+
+.menu-overlay__menu {
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  padding: 5rem;
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  min-width: 300px;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.menu-overlay__list {
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.menu-overlay__item {
+  display: block; /* Asegura que el enlace ocupe todo el espacio disponible */
+}
+
+.menu-overlay__item a {
+  color: var(--background-color);
+  font-family: var(--font-family-text);
+  text-decoration: none;
+  font-size: 2rem;
+  line-height: 1.5;
+  display: inline-block; /* Para que pueda ser desplazado */
+  transition: transform 0.3s ease;
+}
+
+/* Efecto de desplazamiento hacia arriba al hacer hover */
+.menu-overlay__item a:hover {
+  transform: translateY(3px); /* Desplazamiento hacia arriba */
+}
+
+/* Cambiar color de los iconos cuando el menú está activo */
+body.menu-open .header__social svg {
+  fill: var(--background-color); /* Cambia el color del icono cuando el menú está activo */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+body.menu-open .header__logo svg {
+  fill: var(--background-color); /* Cambia el color del icono cuando el menú está activo */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+body.menu-open .menu-toggle span {
+  color: var(--highlight-color); /* Cambiar el color del icono del menú hamburguesa */
+}
+
+body.menu-open header {
+  background-color: var(--secondary-color); /* Cambiar el color del icono del menú hamburguesa */
+  box-shadow: none;
+
+}
+
+/* Bloquear el desplazamiento de la página cuando el menú esté abierto */
+body.menu-open {
+  overflow: hidden;
+}
+
+
+.menu-overlay-header__social{
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-top: 5rem;
+}
+
+.menu-overlay-header__social ul{
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 100%;
+  gap: 1rem;
+}
+
+.menu-overlay-header__social a {
+  display: block;
+}
+
+.menu-overlay-header__social svg {
+  width: auto;
+  height: 0.8rem;
+  fill: var(--background-color);
+  transition: all 0.3s ease; /* Transición suave para el cambio de color */
+}
+
+
+
+
+
+
+/* =====================================
+    HERO
+===================================== */
+
+    /* ===== SECCIÓN HERO PRINCIPAL ===== */
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        text-align: center;
+        padding: 4rem 6rem ;
+        padding-top: 8rem;
+        box-sizing: border-box;
+        height: 100vh;
+    }
+
+    .hero__image--movile{
+      display: none;
+    }
+    
+    /* ===== CONTENIDO DE COLUMNAS ===== */
+    /* Contenedor principal */
+    .hero__content {
+      width: 100%;
+      height: 100%; /* Usa el 100% de la altura de la pantalla */
+      display: flex;
+      justify-content: center; /* Centra horizontalmente */
+      align-items: center; /* Centra verticalmente */
+      gap: 1rem; /* Espacio entre los elementos */
+      font-family: var(--font-family-title);
+    }
+
+    /* Lados: Let's Make y It Happen */
+    .hero__side {
+      font-size: clamp(5rem, 3.5vw + 1.5rem, 3rem);
+      line-height: 0.8;
+      white-space: nowrap; /* Evita el salto de línea */
+    }
+
+    /* Imagen central */
+    .hero__image {
+      width: 150px;
+      height: auto;
+      object-fit: contain;
+}
+
+    
+    /* ===== FOOTER DE HERO ===== */
+    .hero__footer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-top: 2rem;
+        gap: 0.5rem;
+    }
+
+    .hero__footer h4 {
+      font-size: 1.5rem;
+    }
+    
+    .hero__text {
+        margin-bottom: 1rem;
+    }
+
+    .hero__footer button{
+      width: fit-content;
+    }
+
+    .presentation{
+      display: none;
+    }
+
+/* =====================================
+    PROJECTS INTRO
+===================================== */
+
+.projects-intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    background-color: var(--primary-color);
+    padding: 5rem;
+  }
+  
+  .projects-intro__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  
+  .projects-intro__number {
+    font-size: 1.2rem;
+  }
+  
+  .projects-intro__content {
+    display: grid;
+    width: 100%;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+  
+  .projects-intro__highlight {
+    grid-column: 1 / 9;
+    max-width: 75ch;
+  }
+  
+  .projects-intro__headline {
+    margin: 0;
+  }
+  
+  .projects-intro__note {
+    grid-column: 10/ 13;
+  }
+  
+  .projects-intro__note-text {
+    margin: 0;
+  }
+
+  
+/* =====================================
+    PROJECTS
+===================================== */
+
+.project_item {
+  width: 100%;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.project_item a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.project_item a img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background-color: #c4c3bd;
+}
+
+.project_item a:hover {
+  transform: none !important;
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+.projects div{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.projects div button{
+  margin:3rem 0 ;
+}
+
+
+/* =====================================
+    SERVICES
+===================================== */
+
+  .services {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+  }
+
+  .services__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+  }
+
+  .services__header p{
+    font-size: 1.2rem;
+  }
+
+  .services__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .services__intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    gap: 2rem;
+  }
+
+  .services__intro h3{
+    max-width: 10ch;
+  }
+
+  .services__intro-image {
+    width: 50%;
+    height: 100%;
+    margin: 2rem 0;
+  }
+
+  .services__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .services__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .services__item p{
+    max-width: 20ch;
+    }
+
+
+  .services__item-icon {
+    width: 80px;
+    height: 80px;
+  }
+ 
+  
+  .services__item__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+    line-height: 1;
+    font-weight: medium;
+    text-transform: uppercase;
+  }
+
+  .services__item__header span{
+   width: fit-content;
+   font-size: 0.9rem;
+   font-weight: 550;
+  }
+
+
+/* =====================================
+    ABOUT
+===================================== */
+/* Contenedor principal */
+.about {
+  height: 100vh;
+  background-color: var(--secondary-color);
+  display: flex;
+  align-items: center; /* Centra el contenido verticalmente */
+  justify-content: center; /* Centra el contenido horizontalmente */
+  color: var(--background-color);
+  padding: 0; /* Sin margen ni padding en el contenedor */
+  overflow: hidden; /* Asegura que el contenido no se desborde */
+}
+
+/* Contenido */
+.about__content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  width: 100%;
+}
+
+/* Texto de la sección About */
+.about__text {
+  padding: 5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  height: 100%;
+}
+
+.about__text--footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Visual de la sección About */
+.about__visual {
+  position: relative;
+  background-image: url(/assets/1f35e6ee-0c09-4447-8ee5-3fc05fb90026.jpg);
+  background-color: var(--primary-color);
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Asegura que la imagen cubra toda la altura */
+  width: 100%;
+  padding: 0; /* Eliminamos el padding para que la imagen ocupe todo el espacio */
+  overflow: hidden; /* Evita que la imagen se desborde */
+}
+
+/* Wrapper de la imagen */
+.about__image-wrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+.about__number_text{
+  display: none;
+}
+
+/* Número de foto */
+.about__number_photo {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: var(--background-color);
+  padding: 4rem;
+}
+
+/* Nota sobre la imagen */
+.about__note {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  color:var(--background-color);
+  padding: 4rem;
+}
+
+
+
+/* =====================================
+    HOW I WORK
+===================================== */
+  
+/* Estilos generales */
+.how-i-work {
+  padding: 5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.how-i-work__row {
+  display: flex;
+}
+
+/* Fila de la cabecera */
+.how-i-work__row--first {
+  justify-content: space-between;
+  margin-bottom: 3rem;
+}
+
+.how-i-work__number {
+  font-size: 1.2rem;
+}
+
+.how-i-work__title {
+  margin: 0;
+}
+
+/* Segunda fila */
+.how-i-work__row--second {
+  display: flex;
+  align-items:self-start;
+  justify-content: space-between;
+}
+
+.how-i-work__subtitle {
+  margin-right: 2rem;
+}
+
+.how-i-work__image {
+  width: 50%;
+  height: 100%;
+}
+
+/* Tercera fila, usando grid */
+.how-i-work__row--third {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+
+/* Estilos para los elementos dentro de la fila */
+.how-i-work__item {
+  border-radius: 8px;
+  flex: 1;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.how-i-work__item p {
+  max-width: 20ch;
+}
+
+.how-i-work__item-title {
+  margin-bottom: 0.3rem;
+}
+
+/* =====================================
+    PROCESS MOBILE
+===================================== */
+
+
+.process-mobile {
+  display: none;
+  max-width: 100%;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.process-mobile__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+
+.process-mobile__step {
+  font-size: 1.2rem;
+}
+
+.process-mobile__carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.process-mobile__carousel {
+  display: flex;
+  transition: transform 0.5s ease;
+  touch-action: pan-y;
+}
+
+.process-mobile__slide {
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.process-mobile__img-row {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin:2rem 0;
+  width: 100%;
+}
+
+.process-mobile__image {
+  width: 50%;
+  height: 20vh;
+  background-color: var(--primary-color);
+}
+
+.process-mobile__big-number {
+  width: 50%;
+  text-align: left;
+  font-size: 5rem;
+}
+
+.process-mobile__text {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+
+.process-mobile__title-slide {
+  margin-bottom: 8px;
+}
+
+.process-mobile__dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  gap: 8px;
+}
+
+.process-mobile__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+.process-mobile__dot.active {
+  background-color: var(--secondary-color);
+}
+
+  
+/* =====================================
+    FAQ
+===================================== */
+
+/* Estilos generales */
+.faq {
+  padding: 5rem;
+  background-color: var(--primary-color);
+  height: fit-content;
+}
+
+/* Primera fila */
+.faq__row--first {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.faq__title {
+  margin: 0;
+}
+
+.faq__number {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+/* Segunda fila */
+.faq__row--second {
+  text-align: center;
+}
+
+.faq__subtitle {
+  width: 50%;
+  text-align: left;
+}
+
+/* Tercera fila (Acordeón y párrafo) */
+.faq__row--third {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  gap: 6rem;
+}
+
+.faq__intro--up {
+  width: 28%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-left: 2rem;
+}
+
+.faq__intro--up p {
+  margin: 0;
+}
+
+.faq__intro--dawn{
+  display: none;
+}
+
+.faq__accordion {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq__accordion-item {
+  margin-top: 1.5rem;
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+.faq__accordion-checkbox {
+  display: none; /* Ocultamos el checkbox */
+}
+
+/* Estilo para el encabezado */
+.faq__accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq__question {
+  margin-bottom: 0.5rem;
+}
+
+.faq__plus {
+  font-size: 1.7rem;
+}
+
+
+/* Estilo para el cuerpo del acordeón (por defecto oculto) */
+.faq__accordion-body {
+  display: none;
+  padding-top: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.faq__answer {
+  margin-bottom: 1rem;
+}
+
+/* Cuando el checkbox está marcado, mostramos el contenido del acordeón */
+.faq__accordion-checkbox:checked + .faq__accordion-header + .faq__accordion-body {
+  display: block;
+  opacity: 1;
+}
+
+/* Cuando el checkbox está marcado, cambiamos el símbolo + */
+.faq__accordion-checkbox:checked + .faq__accordion-header .faq__plus {
+  transform: rotate(90deg);
+}
+
+
+
+  /* =====================================
+    CONTACT
+===================================== */
+
+/* Estilo para la sección de contacto */
+.contact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+  background-color: var(--background-color);
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.contact__row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Primera fila */
+.contact__row--first {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.contact__number {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+/* Segunda fila (A messege away, párrafo y correo centrados uno debajo del otro) */
+.contact__row--second {
+  display: flex;
+  flex-direction: column; /* Apilar los elementos uno debajo del otro */
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* Subtítulo centrado */
+.contact__subtitle {
+  margin-bottom: 1rem; /* Espacio entre el subtítulo y el párrafo */
+}
+
+/* Descripción centrada */
+.contact__description {
+  max-width: 600px;
+  margin-bottom: 1rem; /* Espacio entre el párrafo y el enlace */
+}
+
+/* Enlace de correo centrado */
+.contact__link {
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-decoration: none;
+  color: var(--link-color);
+}
+
+.contact__link:hover {
+  color: var(--link-hover-color);
+}
+
+/* Tercera fila (Imagen al final) */
+.contact__row--third {
+  text-align: center;
+}
+
+.contact__image {
+  width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+    
+
+  
+/* =====================================
+    FOOTER
+===================================== */
+/* Estilos para el footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 6rem;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  align-items: flex-start;
+  gap: 10rem;
+}
+
+/* Parte izquierda (Logo) */
+.footer__left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+}
+
+.footer__logo {
+  height: auto;
+  color: var(--background-color);
+
+}
+
+
+.footer__left svg {
+  fill: var(--background-color);
+  width: 15rem;
+}
+
+/* Parte derecha (Listas de enlaces) */
+.footer__right {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* Cada lista dentro del footer */
+.footer__list {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.footer__list ul {
+  padding-left: 0;
+  list-style-type: none;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Estilo de los enlaces dentro del footer */
+.footer__list a {
+  text-decoration: none;
+  color: var(--background-color);
+  font-size: 1rem;
+  transition: transform 0.3s ease; /* Transición para el efecto */
+  display: inline-block; /* Asegura que el enlace pueda moverse */
+}
+
+/* Efecto hover para los enlaces (desplazamiento a la derecha) */
+.footer__list a:hover {
+  transform: translateX(5px); /* Desplazamiento hacia la derecha */
+}
+
+  
+
+  
+  /* =====================================
+     MEDIA QUERIES (ejemplo base)
+  ===================================== */
+
+/* ========= 1024px o menos ========= */
+@media (max-width: 1024px) {
+
+
+
+  h3{
+    font-size: clamp(7rem, 6vw, 14rem);
+  }
+
+  /* HEADER */
+  .menu-overlay{
+    height: 100vh;
+  }
+
+  header{
+    padding: 3rem;
+  }
+  
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    padding: 8rem 3rem 3rem 3rem ;
+  }
+
+  .hero__text{
+    width: 100%;
+  }
+
+  .hero__content {
+    flex-direction: column;
+  }
+
+  .hero__image {
+    display: none;
+  }
+
+  .hero__image--movile{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    margin-top: 1rem;
+    padding: 2rem;
+  }
+
+  /* PROJECTS INTRO */
+  .projects-intro {
+    height: fit-content;
+    padding: 3rem;
+  }
+
+  .projects-intro__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    margin-top: 0;
+  }
+
+  /* SERVICES */
+  .services {
+    min-height: 100vh;
+    height: fit-content;
+    padding: 3rem;
+  }
+
+  .services__intro {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .services__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  /* ABOUT */
+  .about {
+    height: fit-content;
+  }
+
+  .about__content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .about__text--header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  .about__text {
+    padding: 3rem;
+    height: 100%;
+  }
+
+  .about__text--footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .about__text div p {
+    width: 50%;
+  }
+
+  .about__text div{
+    gap: 1rem;
+  }
+
+  .about__visual {
+    height: 50vh;
+  }
+
+  .about__number_text {
+    display: flex;
+  }
+
+  .about__number_photo {
+    display: none;
+  }
+
+  .about__note {
+    padding: 2rem;
+  }
+
+  /* PROCESS */
+  .how-i-work {
+    min-height: 100vh;
+    height: fit-content;
+    padding: 3rem;
+    gap: 0;
+  }
+
+  .how-i-work__row--third {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+  }
+
+  .how-i-work__row--second{
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  } 
+
+  .how-i-work__subtitle {
+    margin-right: 0;
+    width: 100%;
+  }
+
+  /* FAQ */
+  .faq{
+    padding: 3rem;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+  }
+
+  .faq__row--third {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .faq__intro--up {
+    display: none;
+  }
+
+  .faq__intro--dawn {
+    display: flex;
+  }
+
+  .faq__accordion {
+    width: 100%;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 3rem;
+    height: fit-content;
+  }
+
+  /* FOOTER */
+
+
+  .footer {
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  .footer__right {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+
+}
+
+/* ========= 1440px o más ========= */
+@media (min-width: 1440px) {
+  
+
+  /* Ajustes específicos para pantallas grandes */
+
+  /*HERO*/
+
+  .hero{
+    height: 100vh;
+  }
+
+  .services {
+    padding: 2.5rem;
+  }
+
+  .about__text {
+    padding: 2.5rem;
+  }
+
+  .contact {
+    padding: 2.5rem;
+  }
+
+  /*ABOUT*/
+  .about__text--footer  {
+    flex-direction: row;
+  }
+
+
+}
+
+
+/* ========= 768px o menos ========= */
+@media (max-width: 599px) {
+
+  h4{
+    font-size:8vw;
+    line-height: 1;
+  }
+
+  h3{
+    font-size: 19vw;
+    line-height: 0.9;
+    min-width: 100%;
+  }
+
+  p{
+    font-size: 4.8vw;
+    line-height: 1.3;
+  }
+
+  button{
+    font-size: 5.8vw;
+    margin-top: 2rem;
+  }
+
+  /* HEADER */
+  header {
+    height: fit-content;
+    padding: 0;
+    position: fixed;
+    background-color: var(--background-color);
+
+  }
+
+  .header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  
+  .header__container div{
+    height: 40px;
+  }
+
+  header.scrolled {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .header__menu-control{
+    height: 100%;
+  }
+
+
+
+  .header__menu-control div span{
+    font-size: 2.5rem;
+  }
+
+
+  .header__social {
+    display: none;
+  }
+
+  .header__logo{
+    justify-content: flex-start;
+    height: 100%;
+  }
+
+  .header__logo svg:last-child{
+    display: block;
+    width: 2.4rem;
+  }
+
+  .header__logo svg:first-child{
+    display: none;
+  }
+
+  .menu-toggle span{
+    height: 40px;
+  }
+  
+
+  .menu-overlay-header__social {
+    display: flex;
+    gap: 15px;
+    flex: 0;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .menu-overlay-header__social svg{
+    height: 1.5rem;
+  }
+
+
+  /*HERO*/
+
+  .hero {
+    height:calc(var(--vh,1vh)*100);
+    padding: 8rem 1.5rem 1.5rem 1.5rem;
+  }
+
+  /*.hero__footer{
+    display: none;
+  }*/
+
+  .hero__text{
+    display: none;
+  }
+
+  .hero__footer h4{
+    font-size: 1.5rem;
+  }
+
+
+  .presentation{
+    padding: 1.5rem;
+    height: fit-content;
+    background-color: var(--secondary-color);
+    color: var(--background-color);
+    width: 100%;
+  }
+
+  .presentation__container{
+    display: flex;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  /* PROJECTS */
+
+  .projects-intro{
+    height: fit-content;
+    padding: 1.5rem;
+  }
+
+  /* ABOUT */
+
+  .about__text{
+    padding: 1.5rem;
+  }
+
+  .about__note{
+    padding: 0.5rem;
+  }
+
+  
+  /* How its work*/
+
+.how-i-work{
+  display: none;
+}
+
+  /* PROCESSS MOBILE*/
+
+  .process-mobile {
+    display: flex;
+  }
+
+  /* SERVICES */
+
+  .services{
+    height: fit-content;
+    padding: 1.5rem;
+  }
+
+  .services__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .services__list div:last-child{
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .services__intro {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .services__item{
+    padding: 1.5rem 0;
+    border-bottom: 0.1rem solid var(--secondary-color);
+  }
+
+  .services__item p{
+    min-width: 100%;
+    padding: 1.3rem 0;
+  }
+
+  .services__item h4 {
+    min-width: 100%;
+}
+
+.services__item__header span{
+  font-size: 1.3rem;
+}
+
+
+
+  /* ABOUT */
+
+  .about{
+    height: fit-content;
+  }
+
+  
+  .about__text--footer {
+    flex-direction: column;
+  }
+
+  .about__content {
+    gap:0;
+  }
+
+  .about__visual {
+    height: 40vh;
+  }
+
+  .about__text div p {
+    width: 100%;
+
+  }
+
+  /* PROCESS */
+  .how-i-work{
+    padding: 1.5rem;
+  }
+
+  .how-i-work__row--third {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .how-i-work__row--second{
+    flex-direction: column;
+    justify-content: left;
+  }
+
+  .contact{
+    height: fit-content;
+  }
+
+  /* FAQ*/
+
+  .faq{
+    padding: 1.5rem;
+    height: fit-content;
+  }
+
+  .faq__subtitle{
+    width: 100%;
+  }
+
+
+   /* CONTACT*/
+
+   .contact{
+    padding: 1.5rem;
+   }
+
+   .contact__link{
+    font-size: 4.8vw;
+   }
+  
+  /* FOOTER*/
+
+  .footer{
+    padding: 1.5rem;
+  }
+
+  .footer__logo{
+    max-width: 100%;
+    height: auto;
+  }
+
+  .footer__list{
+    margin-top: 2rem;
+  }
+
+  .footer__list a{
+    font-size: 4.8vw;
+  }
+
+  .footer__left{
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+  }
+
+
+}
 
